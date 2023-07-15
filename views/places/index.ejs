@@ -1,0 +1,17 @@
+<%layout('layouts/boilerplate')%>
+    <h1>Here are the all places</h1>
+   <div class="row">
+        <% for( let place of places) { %>
+        
+            <div class="card mb-2 col-3 offset-1 p-0 mt-4" >
+                <img  src="<%= place.image[0].url %>" class="img-fluid card-img-top vh-50" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= place.name %></h5>
+                  <p class="card-text fw-bold">Price: <%= place.price %></p>
+                  <a href="/places/<%= place.id %>" class="btn btn-primary">details</a>
+                </div>
+              </div>
+           
+        <% } %>
+      </div>
+    <a href="/places/new" class="btn btn-secondary">add a new place</a>

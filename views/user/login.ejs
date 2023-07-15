@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <%layout('layouts/boilerplate')%>
+        <div class="row">
+            <h1 class="text-center">Login</h1>
+            <div class="col-6 offset-3">
+                <form action="/user/login" method="post" class="needs-validation form text-uppercase fw-bold"
+                    novalidate>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" required>
+                    <div class="invalid-feedback text-capitalize-small fw-medium">
+                        Please choose a username.
+                    </div>
+                    <div class="valid-feedback"></div>
+
+                    <label for="password" class="form-label">password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                    <div class="invalid-feedback text-capitalize-small fw-medium">
+                        Please fill passsword
+                    </div>
+                    <div class="valid-feedback"></div>
+
+                    <button type="submit" class="btn btn-primary mt-3">LOGIN</button>
+                </form>
+
+            </div>
+        </div>
+        <script src="/scripts/formvalidation.js"></script>
+</body>
+
+</html>
