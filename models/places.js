@@ -19,7 +19,9 @@ let placesSchema=new schema({
     author:{
         type:mongoose.Schema.Types.ObjectId,
         ref:Users
-    }
+    },
+    lat:Number,
+    lon:Number
 })
 placesSchema.post('findOneAndDelete',async (place) => {
     if(place.review.length>1){

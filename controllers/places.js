@@ -13,10 +13,15 @@ module.exports.renderNewform=(req,res)=>{
 module.exports.addNewPlace=async(req,res,next)=>{
    const newplace=new Places(req.body.place);
    newplace.image=req.files.map(i=>({url:i.path,filename:i.filename}))
-    newplace.author=req.user._id;
-    await newplace.save();
-    req.flash('success','new place added successfully')
-    res.redirect("/places")
+   const addressResponse= await fetch(`https://geocode.maps.co/search?q=${req.body.place.location}`);
+   const address=await addressResponse.json();
+   newplace.lat= address[0].lat;
+   newplace.lon= address[0].lon;
+   newplace.author=req.user._id;
+   await newplace.save();
+   req.flash('success','new place added successfully')
+   console.log(newplace);
+   res.redirect("/places")
 }
 
 module.exports.renderEditForm=async(req,res)=>{
@@ -40,8 +45,13 @@ module.exports.updatePlace=async(req,res,next)=>{
     }
     const images=req.files.map(i=>({url:i.path,filename:i.filename}));
     updated_place.image.push(...images);
+    const addressResponse= await fetch(`https://geocode.maps.co/search?q=${req.body.place.location}`);
+    const address=await addressResponse.json();
+    updated_place.lat= address[0].lat;
+    updated_place.lon= address[0].lon;
     await updated_place.save();
     req.flash('success','Informatation Updated!!');
+    console.log(updated_place);
     res.redirect('/places')
 }
 

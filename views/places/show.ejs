@@ -65,6 +65,10 @@
                         </div>
 
             </div>
+            
+            <div style="width: 640px; height: 480px ;" id="mapContainer"></div>
+           
+            <script src="/public/scripts/showMap.js"></script>
         </div>
         <div id="reviewsection" class="col-4 offset-1 mt-4">
             <% if (currentUser) { %>
@@ -105,26 +109,10 @@
                             <% } %>
                     </div>
         </div>
-
-    </div>
+    </div> 
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+        var place = <%- JSON.stringify(place) %> // test is now a valid js object
     </script>
+    <script src="/scripts/showMap.js"></script>
+    <script src="/scripts/formvalidation.js"></script>
+    
