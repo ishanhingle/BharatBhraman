@@ -25,3 +25,6 @@ var icon = new H.map.Icon(svgMarkup),
 
 // Add the marker to the map and center the map at the location of the marker:
 map.addObject(marker);   
+
+var mapEvents = new H.mapevents.MapEvents(map);
+var behavior = new H.mapevents.Behavior(mapEvents);

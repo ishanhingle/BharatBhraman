@@ -73,15 +73,14 @@ app.listen(3000,()=>{
     console.log("server started");
 })
 
-
-
 app.use('/places',placeroute);
 app.use('/review',reviewroute)
 app.use('/user',userroute);
 app.use(express.static(path.join(__dirname,'/public')));
 
-app.get("/",(req,res)=>{
-    res.render('home');
+app.get("/",async (req,res,next)=>{
+    const places=await Places.find({});
+    res.render('home',{places});
     next();
 })
 

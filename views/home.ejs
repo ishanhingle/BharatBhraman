@@ -1,1 +1,9 @@
 <%layout('layouts/boilerplate')%>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js"></script>
+<div style="width: 640px; height: 480px ;" id="mapContainer"></div>
+<script>
+    var places = <%- JSON.stringify(places) %> // test is now a valid js object
+</script>
+<script src="/scripts/clusterMap.js"></script>
+
