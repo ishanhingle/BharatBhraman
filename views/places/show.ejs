@@ -1,6 +1,6 @@
 <%layout('layouts/boilerplate')%>
     <div class="row">
-        <div class="col-7 offset-0.5 mt-4 mb-4 ">
+        <div class="col-mb-8 col-lg-6  offset-0.5 mt-4 mb-4 ">
             <div class="card" style="width: 100%;border: 0px;">
                 <h5 class="card-title text-center text-uppercase fs-2 fw-bold" style="border-top: 0px;">
                     <%= place.name %>
@@ -72,9 +72,7 @@
             <% if (currentUser) { %>
                 <h2>Add a review</h2>
                 <form action="/review/<%= place.id %>" method="post" class="form needs-validation" novalidate>
-
-                    <label for="rating" class="form-label">Rating</label>
-                    <input type="range" name="review[rating]" id="rating" min="1" class="form-range" max="5">
+                    <%- include('../partials/rating') %>
                     <div>
                         <textarea required name="review[body]" id="" class="form-control" cols="30" rows="3"></textarea>
                         <div class="invalid-feedback text-capitalize-small fw-medium">

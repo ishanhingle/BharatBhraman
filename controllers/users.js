@@ -1,3 +1,5 @@
+const Users=require('../models/Users')
+
 module.exports.renderRegister=(req, res) => {
     res.render('user/register')
 }
