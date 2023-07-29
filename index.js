@@ -14,6 +14,7 @@
  const passport=require('passport');
  const localStrategy=require('passport-local');
  const passportLocalMongoose=require('passport-local-mongoose');
+ const Mongostore=require('connect-mongo');
  
  const {placeSchema,reviewSchema}=require('./schema')
  
@@ -33,6 +34,13 @@
  mongoose.connect(DBurl);
  const app=express();
  
+ const store = Mongostore.create({
+    mongoUrl: DBurl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
  app.engine('ejs',ejsMate);
  app.set('view engine', 'ejs');
  app.set('views',path.join(__dirname,'/views'));
@@ -40,6 +48,7 @@
  const sessionConfig={
      secret:'ishanisbest',
      resave:false,
+     store,
      saveUninitialized:true,
      Cookie:{
          expires:Date.now()+1000*60*60*24*7,
