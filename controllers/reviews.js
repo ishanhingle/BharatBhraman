@@ -6,6 +6,7 @@ module.exports.addReview=async(req,res)=>{
     const{id}=req.params
     const place=await Places.findById(id);
     const review=new Reviews(req.body.review)
+    review.rating=parseInt(review.rating);
     review.author=req.user._id;
     place.review.push(review);
     await review.save();
