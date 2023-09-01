@@ -10,17 +10,18 @@
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
     type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <!--maps api-->
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
     type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
        type="text/javascript" charset="utf-8"></script>
   </head>
-<body class="d-flex flex-column vh-100">
+<body class="d-flex flex-column vh-100 p-0 m-0 align-items-stretch justify-content-between" id="body">
     <%-include('../partials/navbar')%>
     <div class="container mt-5">
       <%- include('../partials/flash') %>
     </div>
-   <main class="container">
+   <main class="container p-0">
     <%-body%>
   </main>
    <%-include('../partials/footer')%>

@@ -50,4 +50,4 @@ function startClustering(map, data) {
   }
   
   var ui = H.ui.UI.createDefault(map,maptypes);
-startClustering(map,places);
+startClustering(map,p);

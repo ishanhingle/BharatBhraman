@@ -1,17 +1,31 @@
 <%layout('layouts/boilerplate')%>
+  <div class="container d-flex flex-column align-items-center justify-content-center">
+    <div style="width: 70%; height:40vh;" id="mapContainer"></div>
+   
+
     <h1>Here are the all places</h1>
-   <div class="row">
-        <% for( let place of places) { %>
-        
-            <div class="card mb-2 sl-ml-2 col-lg-3 col-sm-7 lg-offset-1 p-0 mt-4" >
-                <img  src="<%= place.image[0].url %>" class="img-fluid card-img-top vh-50" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= place.name %></h5>
-                  <p class="card-text fw-bold">Price: <%= place.price %></p>
-                  <a href="/places/<%= place.id %>" class="btn btn-primary">details</a>
-                </div>
-              </div>
-           
+    <div class="row">
+      <% for( let place of places) { %>
+
+        <div class="card mb-2  sl-ml-2 col-lg-4 col-sm-7  offset-lg-1 p-0 mt-4">
+          <img src="<%= place.image[0].url %>" class="img-fluid card-img-top vh-50" alt="..." style="max-height: 50%;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= place.name %>
+            </h5>
+            <p class="card-text fw-bold">Price: <%= place.price %>
+            </p>
+            <a href="/places/<%= place.id %>" class="btn btn-primary">details</a>
+          </div>
+        </div>
+
         <% } %>
-      </div>
+    </div>
     <a href="/places/new" class="btn btn-secondary">add a new place</a>
+  </div>
+ 
+ 
+ <script>
+   var p= <%-JSON.stringify(places)%> // test is now a valid js object
+</script>
+  <script src="/scripts/clusterMap.js"></script>
